@@ -5,4 +5,4 @@ okProg((Fs, E)) :-
   map(okFun(Fs), Fs),
   okExpr(Fs, [], E, _).
 
-toFunName(((N, _, _), _), N).
+toFunName((N, _, _), N).

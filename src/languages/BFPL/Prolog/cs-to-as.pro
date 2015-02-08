@@ -1,3 +1,6 @@
+% Mapping for functions
+bfplMapping(function, ((N, (Ts, T)), (N, Ns, E)), (N, (Ts, T), (Ns, E))).
+
 % Mapping for function types
 bfplMapping(type, (T1, Ts1), ([T1|Ts2], T2)) :-
   append(Ts2, [T2], Ts1).

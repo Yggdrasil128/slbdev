@@ -1,7 +1,7 @@
 type program = (function*, main);
-type function = (funsig, fundef);
-type funsig = (name, simpletype*, simpletype);
-type fundef = (name, name*, expr);
+type function = (name, funsig, fundef);
+type funsig = (simpletype*, simpletype);
+type fundef = (name*, expr);
 type main = expr;
 symbol inttype : -> simpletype;
 symbol booltype : -> simpletype;

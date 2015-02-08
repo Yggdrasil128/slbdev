@@ -18,6 +18,6 @@ okExpr(P, X, op(O, E1, E2), T0) :-
   okOp(O, T1, T2, T0).
 
 % Check function application
-okExpr(P, X, apply(F, Es), T) :-
+okExpr(P, X, apply(N, Es), T) :-
   map(okExpr(P, X), Es, Ts),
-  member(((F, Ts, T), _), P).
+  member((N, (Ts, T), _), P).

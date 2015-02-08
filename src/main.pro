@@ -1,4 +1,5 @@
 % Load the prelude of SLEPRO
+:- ['prelude/syntax.pro'].
 :- ['prelude/dynamic.pro'].
 :- ['prelude/multifile.pro'].
 :- ['prelude/data.pro'].

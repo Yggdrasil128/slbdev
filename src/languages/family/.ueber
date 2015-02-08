@@ -2,7 +2,7 @@
 
    % Apply the MML to DDL mapping 
    elementOf('familyByRef/mm.term', mml(mappable(term))),
-   mapsTo(mmlToDll, ['familyByRef/mm.term'], ['../ddl/sample.term']),
+   mapsTo(mmlToDll, ['familyByRef/mm.term'], ['../DDL/sample.term']),
 
    % Apply the atomToRef transformation
    mapsTo(  

@@ -1,4 +1,3 @@
-% Substitution
 substitute(_, intconst(I), intconst(I)).
 substitute(_, boolconst(B), boolconst(B)).
 substitute((N,E), name(N), E).

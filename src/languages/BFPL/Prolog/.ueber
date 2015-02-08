@@ -1,13 +1,12 @@
 [
-  % Syntax and sample
+  % Syntax
   macro(eglSyntax(bfpl)),
   macro(eslSyntax(bfpl)),
-  macro(parse(bfpl)),
 
   % Wellness
   language(bfpl(ok(term))),
   membership(bfpl(ok(term)), okProg, []),
-  elementOf('sample.term', bfpl(ok(term))),
+  elementOf('../sample.term', bfpl(ok(term))),
 
   % Results of interpretation
   language(bfpl(value(term))),
@@ -18,8 +17,8 @@
   elementOf('sample.normal', bfpl(normal(term))),
 
   % Interpretation
-  mapsTo(bigStep, ['sample.term'], ['sample.value']),
-  mapsTo(smallStep, ['sample.term'], ['sample.normal']),
-  mapsTo(denotational, ['sample.term'], ['sample.value'])
+  mapsTo(bigStep, ['../sample.term'], ['sample.value']),
+  mapsTo(smallSteps, ['../sample.term'], ['sample.normal']),
+  mapsTo(denotational, ['../sample.term'], ['sample.value'])
 
 ].
