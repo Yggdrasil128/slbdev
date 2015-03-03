@@ -1,7 +1,7 @@
 readTextFile(File, Text) :-
   require(
     fileExpected(File),
-    open(File, read, Input, [])
+    (exists_file(File), open(File, read, Input, []))
   ),
   read_stream_to_codes(Input, Text),
   close(Input).
@@ -14,7 +14,7 @@ writeTextFile(File, Text) :-
 readTermFile(File, Term) :-
   require(
     fileExpected(File),
-    open(File, read, Input, [])
+    (exists_file(File), open(File, read, Input, []))
   ),
   require(
     fileWithPrologTermExpected(File),

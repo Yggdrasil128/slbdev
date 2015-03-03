@@ -1,0 +1,17 @@
+% Statements
+symbol skip : -> stmt ;
+symbol assign : atom x expr -> stmt ;
+symbol if : expr x stmt x stmt -> stmt ;
+symbol while : expr x stmt -> stmt ;
+symbol block : stmt* -> stmt ;
+
+% Expressions
+symbol intconst : integer -> expr ;
+symbol name : atom -> expr ;
+symbol binop : binop x expr x expr -> expr ;
+
+% Binary operators
+symbol add : -> binop ;
+symbol sub : -> binop ;
+symbol mul : -> binop ;
+symbol geq : -> binop ;

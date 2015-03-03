@@ -1,7 +1,7 @@
 % Quoted string literals
 eglToken(qstring(Atom)) -->
   char(quote),
-  star(char(noQuote), String),
+  star(not(char(quote)), String),
   char(quote),
   { atom_codes(Atom, String) }.
 
@@ -15,7 +15,7 @@ eglToken(Atom) -->
   {
     member(
       String,
-      ["#", "*", "+", "?", "{", "}", "[", "]", ":", ";"]
+      ["#", "*", "+", "?", "~", "{", "}", "[", "]", ":", ";"]
     ),
     name(Atom, String) 
   },

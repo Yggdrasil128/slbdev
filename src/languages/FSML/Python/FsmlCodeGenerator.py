@@ -13,8 +13,8 @@ def generateCode(fsm):
                 transitions.insert(0,(fromState, input, action, toState))
         # Look up templates
         env = Environment(loader=FileSystemLoader('templates'))
-        handlerTemplate = env.get_template('handler')
-        stepperTemplate = env.get_template('stepper')
+        handlerTemplate = env.get_template('handler.py-template')
+        stepperTemplate = env.get_template('stepper.py-template')
         # Instantiate templates according to model
         handlerClass = handlerTemplate.render(\
                             actions=actions)

@@ -5,6 +5,7 @@ rule : {'[' label ']'}? nonterminal ':' gsymbols ';' ;
 [star] gsymbol : '{' gsymbols '}' '*' ;
 [plus] gsymbol : '{' gsymbols '}' '+' ;
 [option] gsymbol : '{' gsymbols '}' '?' ;
+[not] gsymbol : '{' gsymbols '}' '~' ;
 gsymbols : {gsymbol}* ;
 label : name ;
 terminal : qstring ;

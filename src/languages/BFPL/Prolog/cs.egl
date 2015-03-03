@@ -1,3 +1,4 @@
+% Program = typed functions + main expression
 program : { function }* main ;
 function : funsig fundef ;
 funsig : name '::' type ;
@@ -5,10 +6,12 @@ fundef : name { name }* '=' expr ;
 type : simpletype { '->' simpletype }* ;
 main : 'main' '=' 'print' '$' expr ;
 
+% Simple types
 [inttype] simpletype :  'Int' ;
 [booltype] simpletype :  'Bool' ;
 
-[op] expr : '(' op ')' subexpr subexpr ;
+% Expressions
+[op] expr : '(' binop ')' subexpr subexpr ;
 [subexpr] expr : subexpr ;
 [apply] expr : name { subexpr }+ ;
 [intconst] subexpr : int ;
@@ -16,7 +19,8 @@ main : 'main' '=' 'print' '$' expr ;
 [if] subexpr : 'if' expr 'then' expr 'else' expr ;
 [name] subexpr : name ;
 
-[add] op : '+' ;
-[sub] op : '-' ;
-[mult] op : '*' ;
-[eq] op : '==' ;
+% Binary operators
+[add] binop : '+' ;
+[sub] binop : '-' ;
+[mul] binop : '*' ;
+[eq] binop : '==' ;

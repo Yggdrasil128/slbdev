@@ -117,11 +117,14 @@ plus(P, [H|T], X, Z) :- apply(P, [H, X, Y]), star(P, T, Y, Z).
 star(P, L, X, Y) :- plus(P, L, X, Y).
 star(_, [], X, X).
 
+% Extension of not/3 to add list construction
+not(P, H, X, T) :- X = [H|T], \+ apply(P, [_, X, _]).
+
 % Peek at accumulator 
-peek(P, X, X) :- apply(P, [X, _]).
+% peek(P, X) :- apply(P, [X, _]).
 
 % Negation for accumulators
-not(P, X, X) :- \+ peek(P, X, X).
+%not(P, X, X) :- \+ peek(P, X).
 
 % Filter a list according to a predicate
 filter(_, [], []).

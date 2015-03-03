@@ -43,6 +43,6 @@ meaningExpr(
     F % Meaning of definition
   )
 ) :-
-     member((_, (N, Ns, E)), P),
+     member((N, _, (Ns, E)), P),
      map(meaningExpr(P), Es, Fs),
      meaningExpr(P, E, F).

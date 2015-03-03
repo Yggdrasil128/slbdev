@@ -21,11 +21,8 @@ xparse(
          LOpt = [L],
          Tree1 =.. [L|Trees1]
        ; 
-         % Use trees as is for nonterminal with one rule
+         % Use trees as is for nonterminal
          LOpt = [],
-         \+ ( member(Rule2, Rules), 
-              Rule2 = (_, N, _),
-              Rule1 \= Rule2 ),
          list2tuple([], Trees1, Tree1) 
        ),
        ( apply(Mapping, [N, Tree1, Tree2]) -> 
@@ -52,6 +49,16 @@ xparse(
        Goal,
        concat(Trees1, Trees2).
 
+% "~"
+xparse(
+    Config,
+    not(Symbols),
+    [H],
+    Input0, Input1
+  ) :-
+       Input0 = [H|Input1],
+       \+ xparseSeq(Config, Symbols, _, Input0, _).
+       
 % Parse groups (sequences) of symbols
 xparseSeq(
     Config,

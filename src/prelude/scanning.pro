@@ -29,15 +29,17 @@ tokens_(_, SPred, [], I1, I2) :-
 char(Type, [H|T], T) :-
   char_type(H, Type).
 
+% Character classification in DCG notation
+not_char(Type, [H|T], T) :-
+  \+ char_type(H, Type).
+
 % Variation on char/3 to return character
 char(Type, H, [H|T], T) :-
-  char_type_(H, Type).
+  char_type(H, Type).
 
-% Extension of char_type/2
-char_type_(Char, Type) :-
- Type == noQuote -> 
-     \+ char_type(Char, quote)
-   ; char_type(Char, Type).
+% Variation on not_char/3 to return character
+not_char(Type, H, [H|T], T) :-
+  \+ char_type(H, Type).
 
 % Variation on but/3 to return consumed character
 but(Chars, H, [H|T], T) :-

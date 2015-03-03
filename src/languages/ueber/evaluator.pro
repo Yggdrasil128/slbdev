@@ -18,6 +18,7 @@ report(X) :-
 % Evaluate a udecl
 evaluate(D) :-
   format(' * ~q: ',[D]),
+  flush_output,
   once(
     ( evaluate_(D) ->
         format('OK~n',[])

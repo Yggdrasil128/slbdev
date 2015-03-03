@@ -1,0 +1,17 @@
+% Statements
+[assign] stmt : name '=' expr ';' ;
+[if] stmt : 'if' expr 'then' stmt 'else' stmt ;
+[while] stmt : 'while' expr 'do' stmt ;
+[skip] stmt : ';' ;
+[block] stmt : '{' { stmt }* '}' ;
+
+% Expressions
+[intconst] expr : int ;
+[name] expr : name ;
+[binop] expr : expr binop expr ;
+
+% Binary operators
+[add] binop : '+' ;
+[sub] binop : '-' ;
+[mul] binop : '*' ;
+[geq] binop : '>=' ;
