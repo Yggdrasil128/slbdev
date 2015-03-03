@@ -1,5 +1,5 @@
 % Lexical mapping for name
-biplMapping(expression, binop(E1, O, E2), binop(O, E1, E2)).
+biplMapping(expr, binop(E1, O, E2), binop(O, E1, E2)).
 
 % Lexical mapping for int
 biplMapping(int, Digits, Int) :-
