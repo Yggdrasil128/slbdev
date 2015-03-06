@@ -7,8 +7,8 @@
 
 % Expressions
 [intconst] expr : int ;
-[name] expr : name ;
-[binop] expr : expr binop expr ;
+[var] expr : name ;
+[binary] expr : expr binop expr ;
 
 % Binary operators
 [add] binop : '+' ;

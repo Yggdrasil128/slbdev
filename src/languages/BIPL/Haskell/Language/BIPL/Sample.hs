@@ -12,9 +12,9 @@ sample = Block [
 
   -- Compute quotient q=3 and remainder r=2
   Assign "q" (IntConst 0),
-  Assign "r" (Name "x"),
+  Assign "r" (Var "x"),
   While
-    (BinOp Geq (Name "r") (Name "y"))
+    (Binary Geq (Var "r") (Var "y"))
     (Block [
-      Assign "r" (BinOp Sub (Name "r") (Name "y")),
-      Assign "q" (BinOp Add (Name "q") (IntConst 1))])]
+      Assign "r" (Binary Sub (Var "r") (Var "y")),
+      Assign "q" (Binary Add (Var "q") (IntConst 1))])]

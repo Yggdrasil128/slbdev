@@ -1,7 +1,8 @@
+// BEGIN ...
 package org.softlang;
 
 import java.util.ArrayList;
-
+// END ...
 public class FsmlSimulator {
 	private FsmlObservation fsm;
 	public FsmlSimulator(FsmlObservation fsm) { this.fsm = fsm; }

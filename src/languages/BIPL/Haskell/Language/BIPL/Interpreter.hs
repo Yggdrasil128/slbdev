@@ -23,8 +23,8 @@ exec (Block (s:ss)) sto = exec (Block ss) (exec s sto)
 -- Evaluation of expressions
 eval :: Expr -> Store -> Value
 eval (IntConst i) _ = Left i
-eval (Name n) sto = sto!n
-eval (BinOp o e1 e2) sto
+eval (Var n) sto = sto!n
+eval (Binary o e1 e2) sto
   = case (o, eval e1 sto, eval e2 sto) of
 -- BEGIN ...
       -- ...

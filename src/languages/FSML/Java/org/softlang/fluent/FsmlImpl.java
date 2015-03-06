@@ -1,8 +1,9 @@
+// BEGIN ...
 package org.softlang.fluent;
 
 import org.softlang.FsmlException;
 import java.util.HashMap;
-
+// END ...
 public class FsmlImpl implements Fsml {
 	// Helper struct for transitions
 	private class Edge {

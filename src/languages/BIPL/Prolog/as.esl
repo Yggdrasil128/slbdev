@@ -7,8 +7,8 @@ symbol block : stmt* -> stmt ;
 
 % Expressions
 symbol intconst : integer -> expr ;
-symbol name : atom -> expr ;
-symbol binop : binop x expr x expr -> expr ;
+symbol var : atom -> expr ;
+symbol binary : binop x expr x expr -> expr ;
 
 % Binary operators
 symbol add : -> binop ;

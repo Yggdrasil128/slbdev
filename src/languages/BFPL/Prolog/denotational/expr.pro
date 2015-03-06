@@ -8,7 +8,7 @@ meaningExpr(
 % Meaning of names
 meaningExpr(
   _, % Program irrelevant
-  name(N), % Name
+  arg(N), % Name
   lookup(N) % Lookup function on the environment
 ).
 
@@ -27,7 +27,7 @@ meaningExpr(
 % Meaning of operator applications
 meaningExpr(
   P, % Program to be passed on
-  op(O, E1, E2), % Syntactical phrase
+  binary(O, E1, E2), % Syntactical phrase
   operation(opVal(O), F1, F2)
 ) :-
      meaningExpr(P, E1, F1),

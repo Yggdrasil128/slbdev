@@ -12,8 +12,8 @@ data Stmt
 -- Expressions
 data Expr
   = IntConst Int
-  | Name String
-  | BinOp BinOp Expr Expr
+  | Var String
+  | Binary BinOp Expr Expr
 
 -- Binary operators
 data BinOp = Add | Sub | Mul | Geq

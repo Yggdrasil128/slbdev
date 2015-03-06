@@ -11,13 +11,13 @@ main : 'main' '=' 'print' '$' expr ;
 [booltype] simpletype :  'Bool' ;
 
 % Expressions
-[op] expr : '(' binop ')' subexpr subexpr ;
+[binary] expr : '(' binop ')' subexpr subexpr ;
 [subexpr] expr : subexpr ;
 [apply] expr : name { subexpr }+ ;
 [intconst] subexpr : int ;
 [brackets] subexpr : '(' expr ')' ;
 [if] subexpr : 'if' expr 'then' expr 'else' expr ;
-[name] subexpr : name ;
+[arg] subexpr : name ;
 
 % Binary operators
 [add] binop : '+' ;

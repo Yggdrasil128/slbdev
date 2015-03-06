@@ -74,3 +74,10 @@ intersperse(_, [], []).
 intersperse(_, [H], [H]).
 intersperse(X, [H1,H2|T1], [H1,X|T2]) :-
   intersperse(X, [H2|T1], T2).
+
+% Modify (ins/upd) for association lists
+modify(K, V, [], [(K, V)]).
+modify(K, V, [(K, _)|R], [(K, V)|R]).
+modify(K1, V1, [(K2, V2)|R1], [(K2, V2)|R2]) :- modify(K1, V1, R1, R2).
+
+

@@ -24,6 +24,7 @@ okF fs (_, ((ts, res), (ns, body))) = okLength && maybe False (==res) okBody
 -- Well-typedness of expressions
 okE :: [Function] -> Context -> Expr -> Maybe SimpleType
 okE _ _ (IntConst _) = Just IntType
+okE _ _ (BoolConst _) = Just BoolType
 okE fs ctx (Name x) = lookup x ctx
 okE fs ctx (If e0 e1 e2)
   = do
@@ -31,7 +32,7 @@ okE fs ctx (If e0 e1 e2)
        t1 <- okE fs ctx e1
        t2 <- okE fs ctx e2
        if t0 == BoolType && t1 == t2 then Just t1 else Nothing
-okE fs ctx (BinOp o e1 e2)
+okE fs ctx (Binary o e1 e2)
   = do
        t1 <- okE fs ctx e1
        t2 <- okE fs ctx e2

@@ -8,9 +8,9 @@ sample = ([(
   "factorial",
   (([IntType], IntType),
    (["x"],
-     If (BinOp Eq (Name "x") (IntConst 0))
+     If (Binary Eq (Name "x") (IntConst 0))
         (IntConst 1)
-        (BinOp Mul
+        (Binary Mul
             (Name "x")
-            (Apply "factorial" [BinOp Sub (Name "x") (IntConst 1)])))))],
+            (Apply "factorial" [Binary Sub (Name "x") (IntConst 1)])))))],
   (Apply "factorial" [IntConst 5]))

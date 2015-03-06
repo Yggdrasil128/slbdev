@@ -10,13 +10,14 @@ symbol booltype : -> simpletype ;
 
 % Expressions
 symbol intconst : integer -> expr ;
-symbol name : atom -> expr ;
+symbol boolconst : boolean -> expr ;
+symbol arg : atom -> expr ;
 symbol if : expr x expr x expr -> expr ;
-symbol op : op x expr x expr -> expr ;
+symbol binary : binop x expr x expr -> expr ;
 symbol apply : atom x expr* -> expr ;
 
 % Binary operators
-symbol add : -> op ;
-symbol sub : -> op ;
-symbol mul : -> op ;
-symbol eq : -> op ;
+symbol add : -> binop ;
+symbol sub : -> binop ;
+symbol mul : -> binop ;
+symbol eq : -> binop ;

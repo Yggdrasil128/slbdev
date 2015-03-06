@@ -13,9 +13,10 @@ data SimpleType = IntType | BoolType deriving Eq
 -- Expressions
 data Expr
   = IntConst Int
+  | BoolConst Bool
   | Name String
   | If Expr Expr Expr
-  | BinOp BinOp Expr Expr
+  | Binary BinOp Expr Expr
   | Apply String [Expr]
 
 -- Binary operators

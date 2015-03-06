@@ -1,26 +1,22 @@
 [
   % Syntax
   macro(eglSyntax(bipl)),
-  macro(eslSyntax(bipl))
+  macro(eslSyntax(bipl)),
 
 /*
   % Wellness
   language(bfpl(ok(term))),
   membership(bfpl(ok(term)), okProg, []),
   elementOf('../sample.term', bfpl(ok(term))),
+*/
 
-  % Results of interpretation
-  language(bfpl(value(term))),
-  language(bfpl(normal(term))),
-  membership(bfpl(value(term)), value, []),
-  membership(bfpl(normal(term)), normal, []),
-  elementOf('sample.value', bfpl(value(term))),
-  elementOf('sample.normal', bfpl(normal(term))),
+  % Result store for sample program
+  language(bipl(store(term))),
+  membership(bipl(store(term)), biplStore:store, []),
+  elementOf('sample.store', bipl(store(term))),
 
   % Interpretation
-  mapsTo(bigStep, ['../sample.term'], ['sample.value']),
-  mapsTo(smallSteps, ['../sample.term'], ['sample.normal']),
-  mapsTo(denotational, ['../sample.term'], ['sample.value'])
-*/
+  mapsTo(biplBigStep:execute, ['../sample.term'], ['sample.store']),
+  mapsTo(biplClosure:allSteps, ['../sample.term'], ['sample.store'])
 
 ].

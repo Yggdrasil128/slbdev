@@ -1,12 +1,15 @@
+% BEGIN ...
+:- module(bfplClosure, []).
+% END ...
 % Evaluate main expression of program
-smallSteps((Fs, E1), E2) :-
-  smallSteps(Fs, E1, E2).
+allSteps((Fs, E1), E2) :-
+  allSteps(Fs, E1, E2).
 
 % Reflexive case
-smallSteps(_, E, E) :-
-  normal(E).
+allSteps(_, E, E) :-
+  bfplNormal:normal(E).
 
 % Transitive case
-smallSteps(Fs, E1, E3) :-
-  smallStep(Fs, E1, E2),
-  smallSteps(Fs, E2, E3).
+allSteps(Fs, E1, E3) :-
+  bfplStep:step(Fs, E1, E2),
+  allSteps(Fs, E2, E3).

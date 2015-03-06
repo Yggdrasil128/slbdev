@@ -1,5 +1,6 @@
+# BEGIN ...
 from FsmlExceptions import *
-
+# END ...
 # An FSM must have exactly one initial state.
 def singleInitial(fsm):
     initials = [initial for initial, [decl] in fsm.iteritems() if decl["initial"]]

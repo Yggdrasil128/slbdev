@@ -1,5 +1,6 @@
+# BEGIN ...
 from FsmlExceptions import FsmlIllegalEventException, FsmlInfeasibleEventException
-
+# END ...
 def simulate(fsm, input):
 
     input = list(input)

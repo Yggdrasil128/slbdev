@@ -2,7 +2,7 @@
 okExpr(_, _, intconst(_), inttype).
 
 % The context provides the type of a variable 
-okExpr(_, X, name(N), T) :-
+okExpr(_, X, arg(N), T) :-
   member((N, T), X).
 
 % Condition is of boolean type; others are of the same type 
@@ -12,7 +12,7 @@ okExpr(P, X, if(E1, E2, E3), T) :-
   okExpr(P, X, E3, T).
  
 % Check operator application
-okExpr(P, X, op(O, E1, E2), T0) :-
+okExpr(P, X, binary(O, E1, E2), T0) :-
   okExpr(P, X, E1, T1),
   okExpr(P, X, E2, T2),
   okOp(O, T1, T2, T0).
