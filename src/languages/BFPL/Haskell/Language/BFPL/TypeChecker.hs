@@ -25,7 +25,7 @@ okF fs (_, ((ts, res), (ns, body))) = okLength && maybe False (==res) okBody
 okE :: [Function] -> Context -> Expr -> Maybe SimpleType
 okE _ _ (IntConst _) = Just IntType
 okE _ _ (BoolConst _) = Just BoolType
-okE fs ctx (Name x) = lookup x ctx
+okE fs ctx (Arg x) = lookup x ctx
 okE fs ctx (If e0 e1 e2)
   = do
        t0 <- okE fs ctx e0

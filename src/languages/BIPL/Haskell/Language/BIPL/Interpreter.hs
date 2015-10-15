@@ -2,35 +2,20 @@
 module Language.BIPL.Interpreter where
 
 import Language.BIPL.Syntax
-import Data.Map (Map, (!), empty, fromList, insert)
+import Language.BIPL.Domains
+import Data.Map ((!), insert)
 -- END ...
--- Results of expression evaluation
-type Value = Either Int Bool
-
--- Stores as maps from variable ids to values
-type Store = Map String Value
-
 -- Execution of statements
-exec :: Stmt -> Store -> Store
-exec Skip sto = sto
-exec (Assign x e) sto = insert x (eval e sto) sto
-exec (If e s1 s2) sto = either undefined cond (eval e sto)
-  where cond b = if b then exec s1 sto else exec s2 sto
-exec (While e s) sto = exec (If e (Block [s, While e s]) Skip) sto
-exec (Block []) sto = sto
-exec (Block (s:ss)) sto = exec (Block ss) (exec s sto)
+execute :: Stmt -> StoreT
+execute Skip sto = sto
+execute (Assign x e) sto = insert x (evaluate e sto) sto
+execute (Block []) sto = sto
+execute (Block (s:ss)) sto = execute (Block ss) (execute s sto)
+execute (If e s1 s2) sto = cond (evaluate e) (execute s1) (execute s2) sto
+execute (While e s) sto = execute (If e (Block [s, While e s]) Skip) sto
 
 -- Evaluation of expressions
-eval :: Expr -> Store -> Value
-eval (IntConst i) _ = Left i
-eval (Var n) sto = sto!n
-eval (Binary o e1 e2) sto
-  = case (o, eval e1 sto, eval e2 sto) of
--- BEGIN ...
-      -- ...
-      (Add, Left x, Left y) -> Left (x+y)
-      (Sub, Left x, Left y) -> Left (x-y)
-      (Mul, Left x, Left y) -> Left (x*y)
-      (Geq, Left x, Left y) -> Right (x>=y)
-      _ -> undefined
--- END ...
+evaluate :: Expr -> Store -> Value
+evaluate (IntConst i) _ = Left i
+evaluate (Var n) sto = sto!n
+evaluate (Binary o e1 e2) sto = binop o (evaluate e1 sto) (evaluate e2 sto)

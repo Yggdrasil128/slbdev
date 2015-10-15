@@ -1,7 +1,7 @@
 % Statements
 [assign] stmt : name '=' expr ';' ;
 [if] stmt : 'if' expr 'then' stmt 'else' stmt ;
-[while] stmt : 'while' expr 'do' stmt ;
+[while] stmt : 'while' '(' expr ')' stmt ;
 [skip] stmt : ';' ;
 [block] stmt : '{' { stmt }* '}' ;
 

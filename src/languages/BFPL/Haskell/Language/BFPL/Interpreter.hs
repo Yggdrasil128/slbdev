@@ -18,7 +18,7 @@ eval (fs, e) = eval' empty e
     eval' :: Env -> Expr -> Value
     eval' _ (IntConst x) = Left x
     eval' _ (BoolConst x) = Right x
-    eval' env (Name x) = env!x
+    eval' env (Arg x) = env!x
     eval' env (If e0 e1 e2)
       = let (Right b) = eval' env e0
         in if b then eval' env e1 else eval' env e2

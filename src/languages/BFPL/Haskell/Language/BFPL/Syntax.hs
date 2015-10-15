@@ -14,7 +14,7 @@ data SimpleType = IntType | BoolType deriving Eq
 data Expr
   = IntConst Int
   | BoolConst Bool
-  | Name String
+  | Arg String
   | If Expr Expr Expr
   | Binary BinOp Expr Expr
   | Apply String [Expr]
