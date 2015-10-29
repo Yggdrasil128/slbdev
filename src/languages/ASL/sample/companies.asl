@@ -21,16 +21,16 @@ function removeEmployee : Company -> Name -> Company?
 function updateEmployee : Company -> Employee -> Company?
 
 -- Invariant for companies
-property companyInvariant(c, i1, i2) : Company x Index x Index .
+property companyInvariant(c, e1, e2) : Company x Employee x Employee .
   let es = getEmployees(c) in
-    i1 < |es| /\ i2 < |es| /\ i1 \= i2
-      => getEmployeeName(es!!i1) \= getEmployeeName(es!!i2)    
+    e1 <- es /\ e2 <- es /\ not e1 = e2
+      => not (getEmployeeName(e1) = getEmployeeName(e2))
 
 -- Property of constructor in terms of getters
 property companyConstruction(n, es) : Name x Employee* .
   let c = mkCompany(n, es) in
-       getCompanyName(n) == n
-    /\ getEmployees(c) == es
+       getCompanyName(c) = n
+    /\ getEmployees(c) = es
 
 -- Property of addEmployee
 property addEmployeeIndeed(c, e) : Company x Employee .

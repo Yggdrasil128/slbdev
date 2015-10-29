@@ -16,6 +16,7 @@ predicate isPositiveSalary : Salary
 predicate isNegativeSalary : Salary 
 predicate isZeroSalary : Salary
 predicate isNonNegativeSalary : Salary 
+predicate isNonPositiveSalary : Salary 
 
 -- Comparison
 predicate isGreaterSalary : Salary x Salary

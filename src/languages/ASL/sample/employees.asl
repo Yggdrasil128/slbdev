@@ -21,6 +21,13 @@ function setSalary : Employee x Salary -> Employee?
 property employeeInvariant(e) : Employee .
   nonnegativeSalary(getSalary(e))
 
+-- Property of constructor in terms of getters
+property employeeConstruction(n, a, s) : Name x Address x Salary .
+  let e = mkEmployee(n, a, s) in
+       getEmployeeName(e) = n
+    /\ getAddress(e) = a
+    /\ getSalary(e) = s
+
 -- Property of the salary setter
 property modifySalaryOnly(e0, s1) : Employee x Salary .
   nonnegativeSalary(s1) =>
