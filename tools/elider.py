@@ -26,6 +26,9 @@ exts["bsl"] = exts["pro"]
 exts["esl"] = exts["pro"]
 exts["lal"] = exts["pro"]
 exts["bfpl"] = exts["hs"]
+exts["ull"] = exts["hs"]
+exts["tll"] = exts["hs"]
+exts["pll"] = exts["hs"]
 exts["bipl"] = exts["java"]
 for (dirpath, dirnames, filenames) in os.walk("src"):
     print dirpath

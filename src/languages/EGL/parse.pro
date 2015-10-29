@@ -15,15 +15,15 @@ xparse(
        Config = (Rules, _, _, Mapping),
        member(Rule1, Rules),
        Rule1 = (LOpt, N, Rhs),
-       xparseSeq(Config, Rhs, Trees1, Input0, Input1),
+       xparseSeq(Config, Rhs, Trees, Input0, Input1),
        (
          % Use label when available
          LOpt = [L],
-         Tree1 =.. [L|Trees1]
+         Tree1 =.. [L|Trees]
        ; 
          % Use trees as is for nonterminal
          LOpt = [],
-         list2tuple([], Trees1, Tree1) 
+         list2tuple([], Trees, Tree1)
        ),
        ( apply(Mapping, [N, Tree1, Tree2]) -> 
              true
@@ -39,15 +39,14 @@ xparse(Config, n(N), [Tree], Input0, Input1) :-
 xparse(
     Config,
     EbnfSymbol,
-    [Trees2],
+    [Trees],
     Input0, Input1
   ) :-
        EbnfSymbol =.. [Func,Symbols],
        member(Func, [star, plus, option]),
-       Pred = xparseSeq(Config, Symbols),
-       Goal =.. [Func, Pred, Trees1, Input0, Input1],
-       Goal,
-       concat(Trees1, Trees2).
+       Pred = xparseTuple(Config, Symbols),
+       Goal =.. [Func, Pred, Trees, Input0, Input1],
+       Goal.
 
 % "~"
 xparse(
@@ -68,3 +67,8 @@ xparseSeq(
   ) :-
        seq(xparse(Config), Symbols, Trees1, Input0, Input1),
        concat(Trees1, Trees2).
+
+% Parse groups (sequences) of symbols as a tuple
+xparseTuple(Config, Symbols, Tree, Input0, Input1) :-
+  xparseSeq(Config, Symbols, Trees, Input0, Input1),
+  list2tuple([], Trees, Tree).
