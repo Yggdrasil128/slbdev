@@ -1,4 +1,5 @@
 import salaries
+import emplyoees
 import companies
 
 function totalSalaries : Company -> Salary

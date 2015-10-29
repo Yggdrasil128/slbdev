@@ -20,7 +20,7 @@ predicate isNonNegativeSalary : Salary
 -- Comparison
 predicate isGreaterSalary : Salary x Salary
 
--- zeroSalary is left and right unit of addSalary, indeed
+-- zeroSalary is left and right unit of addSalary
 property zeroUnit(s) : Salary .
      addSalary(s, zeroSalary) = s
   /\ addSalary(zeroSalary, s) = s
