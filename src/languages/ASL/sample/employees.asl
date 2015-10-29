@@ -27,4 +27,4 @@ property modifySalaryOnly(e0, s1) : Employee x Salary .
     let e1 = setSalary e0 s1 in
          getEmployeeName(e0) = getEmployeeName(e1)
       /\ getAddress(e0) = getAddress(e1)
-      /\ s1 = getAddress(e1)
+      /\ s1 = getSalary(e1)
