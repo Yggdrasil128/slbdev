@@ -8,7 +8,7 @@ function cutSalaries : Company -> Company
 -- Property of total to be zero for a company without employees
 property totalNoEmployees(c) : Company .
   getEmployees(c) = [] =>
-    zeroSalary(totalSalaries(c))
+    totalSalaries(c) = zeroSalary
 
 -- Property of every employee to count for total
 property totalEmployeeCounts(c, e) : Company x Employee .
